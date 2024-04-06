@@ -104,7 +104,7 @@ class GameCheckin:
                 log.warning('429 Too Many Requests ，即将进入下一次请求')
                 continue
             data = req.json()
-            if data["retcode"] == 0 and data["data"]["success"] == 1 and i < retries:
+            if data["retcode"] == 0 and data["data"]["success"] == 1 and i <= retries:
                 validate = captcha.game_captcha(data["data"]["gt"], data["data"]["challenge"])
                 if validate:
                     header.update({
